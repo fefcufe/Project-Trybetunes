@@ -12,6 +12,7 @@ class Album extends Component {
       artistName: '',
       albumName: '',
       musicsList: [],
+      // loading: false,
     };
   }
   // recuperar o id passado como parametro para fazer a
@@ -45,12 +46,14 @@ class Album extends Component {
 
           <h3 data-testid="album-name">{ albumName }</h3>
           <ul>
-            { musicsList.map(({ trackName, previewUrl }, index) => {
+            { musicsList.map((music, index) => {
               if (index === 0) return null;
               return (<MusicCard
-                trackName={ trackName }
-                previewUrl={ previewUrl }
-                key={ trackName }
+                trackName={ music.trackName }
+                previewUrl={ music.previewUrl }
+                trackId={ music.trackId }
+                music={ music }
+                key={ music.trackId }
               />);
             })}
           </ul>
