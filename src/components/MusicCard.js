@@ -1,7 +1,7 @@
 import propTypes from 'prop-types';
 import React, { Component } from 'react';
 import Loading from '../pages/Loading';
-import { addSong } from '../services/favoriteSongsAPI';
+import { addSong, getFavoriteSongs } from '../services/favoriteSongsAPI';
 
 class MusicCard extends Component {
   constructor() {
@@ -10,7 +10,19 @@ class MusicCard extends Component {
     this.state = {
       loading: false,
       checked: false,
+      favoriteSongs: [],
     };
+  }
+
+  /* async componentDidMount() {
+  } */
+  async componentDidMount() {
+    const response = await getFavoriteSongs();
+    // console.log(response);
+    this.setState((prevState) => ({
+      favoriteSongs: [...prevState.favoriteSongs, ...response],
+    }));
+    // console.log(this.state.favoriteSongs);
   }
 
   handleCheckbox = async (musica) => {

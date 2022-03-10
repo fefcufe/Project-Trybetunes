@@ -12,9 +12,9 @@ class Album extends Component {
       artistName: '',
       albumName: '',
       musicsList: [],
-      // loading: false,
     };
   }
+
   // recuperar o id passado como parametro para fazer a
   // requisição com esse id e passar as informacoes
   // para renderização da pagina Album
@@ -34,7 +34,8 @@ class Album extends Component {
   }
 
   render() {
-    const { artistName, albumName, musicsList, collectionArt } = this.state;
+    const { artistName, albumName, musicsList,
+      collectionArt } = this.state;
     return (
       <div data-testid="page-album">
         <Header />
@@ -54,6 +55,7 @@ class Album extends Component {
                 trackId={ music.trackId }
                 music={ music }
                 key={ music.trackId }
+                // checked={ favoritesSongs.includes(music.trackId) }
               />);
             })}
           </ul>
