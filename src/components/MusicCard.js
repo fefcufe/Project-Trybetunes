@@ -23,6 +23,11 @@ class MusicCard extends Component {
       favoriteSongs: [...prevState.favoriteSongs, ...response],
     }));
     // console.log(this.state.favoriteSongs);
+    /* const { trackId } = this.props;
+    const { favoriteSongs } = this.setState;
+    this.setState({
+      checked: favoriteSongs.includes(trackId),
+    }); */
   }
 
   handleCheckbox = async (musica) => {
